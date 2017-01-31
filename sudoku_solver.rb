@@ -1,3 +1,4 @@
+# Opens the file and splits each row into an array.
 sudokou_solver = File.foreach('ruby.txt').map {|line| line.split(' ')}
 row_one = sudokou_solver[0]
 row_two = sudokou_solver[1]
