@@ -1,20 +1,44 @@
-class Interface
-  # attr_accessor :user_input
+load 'account_class.rb'
 
-  def create_account(starting_balance, account_holder, account_opening_date)
-    @new_account = Account.new(starting_balance, account_holder, account_opening_date)
+class Interface
+  attr_accessor :account
+
+  def initialize
+    show_menu
+    @account = create_account
   end
-  def menu()
-    puts "Press 1 for displaying balance\n2 for withdrawing\n3 to deposit\nand press 0 to quit."
-    user_input = gets.chomp
-    if user_input == "1"
-      print @balance
-    elsif user_input == "2"
-      print @balance - withdraw()
-    elsif user_input == "3"
-      puts "Depositing.."
-    else
-      return
-    end
+
+  def show_menu
+    puts "Menu would be shown here."
+
+  end
+
+  def add_balance
+    puts "Enter amount to be added."
+    balance_to_be_added  = gets
+    @account.add(balance_to_be_added)
+  end
+
+  def withdraw_balance
+  end
+
+  def show_balance
+  end
+
+  def create_account
+    puts "Ask for data needed to open an account"
+    #get data for name and assign into variable
+    # @account = Account.new(name, balance)
+    puts @account.inspect
+  end
+
+  def save_data
+    #save the account information in a yaml file
+  end
+
+  def load_data
+    #check if there is a yaml file
+    #if there is, load from there
+    #if not, create a new yaml file to store the account data
   end
 end

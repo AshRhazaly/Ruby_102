@@ -1,31 +1,21 @@
 class Account
-  attr_accessor :balance
-  attr_reader :account_holder ,:account_opening_date
+  attr_accessor :balance, :name
 
-  def initialize(starting_balance, account_holder, account_opening_date)
+  def initialize(starting_balance, name)
     @balance = starting_balance
-    @account_holder = account_holder
-    @account_opening_date = account_opening_date
+    @name = name
   end
 
-  def withdraw()
-    puts "How much would you like to withdraw?"
-    amount = gets.chomp
-    if @balance > amount
-      @balance -= amount
-    else
-      puts "Insufficient balance in account. Unable to withdraw."
-    end
-  end
-
-  def deposit()
-    puts "How much would you like to deposit?"
-    amount = gets.chomp
+  def deposit(amount)
     @balance += amount
+    puts "You have deposited #{amount}."
+  end
+
+  def withdraw(amount)
+    if amount <= @balance
+      @withdraw -= amount
+      puts "You have withdrawn #{amount}"
+    else
+      puts "dude you don't have that much money."
   end
 end
-
-
-# show menu to the user
-# ability to intereact.
-#
