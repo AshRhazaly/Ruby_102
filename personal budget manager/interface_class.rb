@@ -1,3 +1,4 @@
+require 'yaml'
 load 'account_class.rb'
 class Interface
   attr_accessor :account
@@ -44,14 +45,14 @@ class Interface
     @cust_account = Account.new(starting_balance, name)
   end
 
-
-#   def save_data
-#     #save the account information in a yaml file
-#   end
-#
-#   def load_data
-#     #check if there is a yaml file
-#     #if there is, load from there
-#     #if not, create a new yaml file to store the account data
-#   end
+  # def save_data
+  #   @cust_account.balance.to_yaml
+  # end
+  #
+  # def load_data
+  #   YAML::load(save_data)
+  #   #check if there is a yaml file
+  #   #if there is, load from there
+  #   #if not, create a new yaml file to store the account data
+  # end
 end

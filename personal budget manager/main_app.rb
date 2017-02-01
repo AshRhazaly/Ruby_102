@@ -4,6 +4,7 @@ ash = Interface.new
 
 ash.create_account
 @@still_in = true
+#Not sure why there's an error in the output
 while @@still_in == true
   ash.show_menu
 end
