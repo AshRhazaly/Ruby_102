@@ -9,12 +9,14 @@ class Account
   def deposit(amount)
     @balance += amount
     puts "You have deposited #{amount}."
+    puts "Your current balance is #{@balance}."
   end
 
   def withdraw(amount)
     if amount <= @balance
-      @withdraw -= amount
+      @balance -= amount
       puts "You have withdrawn #{amount}"
+      puts "Your current balance is #{@balance}."
     else
       puts "dude you don't have that much money."
     end

@@ -3,9 +3,7 @@ class Interface
   attr_accessor :account
 
   def initialize
-    create_account
     show_menu
-    @account = create_account
   end
 
   def show_menu
@@ -28,13 +26,13 @@ class Interface
   def add_balance
     puts "Enter amount to be added."
     balance_to_be_added  = gets.chomp.to_i
-    @account.deposit(balance_to_be_added)
+    @cust_account.deposit(balance_to_be_added)
   end
 
   def withdraw_balance
     puts "Please enter your amount you'd like to withdraw."
     balance_to_be_withdrawn = gets.chomp.to_i
-    @account.withdraw(balance_to_be_withdrawn)
+    @cust_account.withdraw(balance_to_be_withdrawn)
   end
 
   def show_balance
