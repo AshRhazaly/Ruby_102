@@ -2,12 +2,8 @@ load 'account_class.rb'
 class Interface
   attr_accessor :account
 
-  def initialize
-    show_menu
-  end
-
   def show_menu
-    puts "Press 1 to display your current balance
+    puts "\nPress 1 to display your current balance
     \nPress 2 to Deposit
     \nPress 3 to Withdraw"
     user_input = gets.chomp
@@ -18,6 +14,7 @@ class Interface
     elsif user_input == "3"
       withdraw_balance
     else
+      @@still_in = false
       puts "Invalid option..exiting program."
       return
     end
@@ -46,6 +43,7 @@ class Interface
     starting_balance = gets.chomp.to_i
     @cust_account = Account.new(starting_balance, name)
   end
+
 
 #   def save_data
 #     #save the account information in a yaml file
