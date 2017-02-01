@@ -17,5 +17,6 @@ class Account
       puts "You have withdrawn #{amount}"
     else
       puts "dude you don't have that much money."
+    end
   end
 end
