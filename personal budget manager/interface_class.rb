@@ -25,16 +25,19 @@ class Interface
     puts "Enter amount to be added."
     balance_to_be_added  = gets.chomp.to_i
     @cust_account.deposit(balance_to_be_added)
+    save_data
   end
 
   def withdraw_balance
     puts "Please enter your amount you'd like to withdraw."
     balance_to_be_withdrawn = gets.chomp.to_i
     @cust_account.withdraw(balance_to_be_withdrawn)
+    save_data
   end
 
   def show_balance
     print "Your balance is $#{@cust_account.balance}"
+    save_data
   end
 
   def create_account
@@ -46,14 +49,12 @@ class Interface
     show_menu
   end
 
-  # def save_data
-  #   @cust_account.balance.to_yaml
-  # end
-  #
+  def save_data
+    client_data = {"starting_balance" => @balance, "name" => @name}
+    File.open("account_info.yml", "w") {|f| f.write(client_data.to_yaml) }
+  end
+
   # def load_data
-  #   YAML::load(save_data)
-  #   #check if there is a yaml file
-  #   #if there is, load from there
-  #   #if not, create a new yaml file to store the account data
+  #   if File.exist?(open)
   # end
 end
