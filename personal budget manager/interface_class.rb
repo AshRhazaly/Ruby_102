@@ -50,11 +50,11 @@ class Interface
   end
 
   def save_data
-    client_data = {"starting_balance" => @balance, "name" => @name}
+    client_data = {"starting_balance" => @cust_account.balance, "name" => @cust_account.name}
     File.open("account_info.yml", "w") {|f| f.write(client_data.to_yaml) }
   end
 
   # def load_data
-  #   if File.exist?(open)
+  #   @cust_account = YAML.load("accountinfo.yml") if File.exist?(account_info.yml)
   # end
 end
