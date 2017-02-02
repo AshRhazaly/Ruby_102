@@ -19,7 +19,7 @@ class Interface
       transaction_history
     else
       puts "Invalid option..exiting program."
-      return
+      exit
     end
   end
 
@@ -39,6 +39,8 @@ class Interface
 
   def show_balance
     puts "Your balance is $#{@cust_account.balance}"
+    puts "Press ENTER to continue"
+    gets
     save_data
   end
 
@@ -55,6 +57,8 @@ class Interface
     @cust_account.transactions.each do |txn|
       puts txn
     end
+    puts "Press ENTER to continue"
+    gets
     show_menu
   end
 
@@ -65,7 +69,7 @@ class Interface
   end
 
   def load_data
-    puts "What is your name?"
+    puts "What is your Account Name? (This is case-sensitive)"
     account_name = gets.chomp
     existing_account = YAML.load(File.open("#{account_name}.yml")) if File.exist?("#{account_name}.yml")
     @cust_account = Account.new(existing_account["starting_balance"], existing_account["name"],existing_account["transactions"])
