@@ -6,6 +6,7 @@ class Interface
     puts "\nPress 1 to display your current balance
     \nPress 2 to Deposit
     \nPress 3 to Withdraw
+    \nPress 4 to Show your Transactions history
     \nPress any other number to exit the program."
     user_input = gets.chomp
     if user_input == "1"
@@ -14,8 +15,9 @@ class Interface
       add_balance
     elsif user_input == "3"
       withdraw_balance
+    elsif user_input == "4"
+      transaction_history
     else
-      still_in = false
       puts "Invalid option..exiting program."
       return
     end
@@ -36,7 +38,7 @@ class Interface
   end
 
   def show_balance
-    print "Your balance is $#{@cust_account.balance}"
+    puts "Your balance is $#{@cust_account.balance}"
     save_data
   end
 
@@ -49,8 +51,15 @@ class Interface
     show_menu
   end
 
+  def transaction_history
+    @cust_account.transactions.each do |txn|
+      puts txn
+    end
+    show_menu
+  end
+
   def save_data
-    client_data = {"starting_balance" => @cust_account.balance, "name" => @cust_account.name}
+    client_data = {"starting_balance" => @cust_account.balance, "name" => @cust_account.name, "transactions" => @cust_account.transactions}
     File.open("account_info.yml", "w") {|f| f.write(client_data.to_yaml) }
   end
 
