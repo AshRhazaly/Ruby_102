@@ -71,9 +71,20 @@ class Interface
   def load_data
     puts "What is your Account Name? (This is case-sensitive)"
     account_name = gets.chomp
-    existing_account = YAML.load(File.open("#{account_name}.yml")) if File.exist?("#{account_name}.yml")
-    @cust_account = Account.new(existing_account["starting_balance"], existing_account["name"],existing_account["transactions"])
-    show_menu
-    save_data
+    if File.exist?("#{account_name}.yml") == true
+      existing_account = YAML.load(File.open("#{account_name}.yml"))
+      @cust_account = Account.new(existing_account["starting_balance"], existing_account["name"],existing_account["transactions"])
+      show_menu
+      save_data
+    else
+      puts "That's not your account dude"
+      puts "Press ENTER to try again or q to quit."
+      input = gets.chomp
+        if input == "q"
+          exit
+        else
+          load_data
+        end
+    end
   end
 end
