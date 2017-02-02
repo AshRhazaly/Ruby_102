@@ -9,12 +9,18 @@ class Account
   end
 
   def deposit(amount)
-    @balance += amount
-    puts "You have deposited #{amount}."
-    puts "Your current balance is #{@balance}."
-    @transactions << "#{@transactions_count += 1}. You have deposited #{amount}"
-    puts "Press ENTER to continue"
-    gets
+    if amount > 0
+      @balance += amount
+      puts "You have deposited #{amount}."
+      puts "Your current balance is #{@balance}."
+      @transactions << "#{@transactions_count += 1}. You have deposited #{amount}"
+      puts "Press ENTER to continue"
+      gets
+    else
+      puts "Dude you can't deposit a negative number"
+      puts "Try again."
+      gets
+      deposit
   end
 
   def withdraw(amount)
@@ -25,10 +31,15 @@ class Account
       @transactions << "#{@transactions_count += 1}. You have withdrawn #{amount}"
       puts "Press ENTER to continue"
       gets
-    else
+    elsif amount >= @balance
       puts "dude you don't have that much money."
       puts "Press ENTER to continue"
       gets
+    else
+      puts "Dude you can't deposit a negative number"
+      puts "Try again."
+      gets
+      withdraw
     end
   end
 end
