@@ -61,6 +61,7 @@ class Interface
   def save_data
     client_data = {"starting_balance" => @cust_account.balance, "name" => @cust_account.name, "transactions" => @cust_account.transactions}
     File.open("account_info.yml", "w") {|f| f.write(client_data.to_yaml) }
+    show_menu
   end
 
   def load_data

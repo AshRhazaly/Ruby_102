@@ -1,5 +1,7 @@
 ---
-starting_balance: 840
-name: ASh
+starting_balance: 3400
+name: Ash
 transactions:
-- 1. You have withdrawn 200
+- 1. You have deposited 200
+- 2. You have deposited 200
+- 3. You have deposited 2000
