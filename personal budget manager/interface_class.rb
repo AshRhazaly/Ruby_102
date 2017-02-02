@@ -3,6 +3,7 @@ load 'account_class.rb'
 class Interface
   attr_accessor :account
   def show_menu
+    puts "======================================"
     puts "\nPress 1 to display your current balance
     \nPress 2 to Deposit
     \nPress 3 to Withdraw
@@ -18,12 +19,14 @@ class Interface
     elsif user_input == "4"
       transaction_history
     else
+      puts "======================================"
       puts "Invalid option..exiting program."
       exit
     end
   end
 
   def add_balance
+    puts "======================================"
     puts "Enter amount to be added."
     balance_to_be_added  = gets.chomp.to_i
     @cust_account.deposit(balance_to_be_added)
@@ -31,6 +34,7 @@ class Interface
   end
 
   def withdraw_balance
+    puts "======================================"
     puts "Please enter your amount you'd like to withdraw."
     balance_to_be_withdrawn = gets.chomp.to_i
     @cust_account.withdraw(balance_to_be_withdrawn)
@@ -38,6 +42,7 @@ class Interface
   end
 
   def show_balance
+    puts "======================================"
     puts "Your balance is $#{@cust_account.balance}"
     puts "Press ENTER to continue"
     gets
@@ -45,11 +50,14 @@ class Interface
   end
 
   def create_account
+    puts "======================================"
     puts "What is your name?"
     name = gets.chomp
+    puts "======================================"
     puts "What's your starting balance?"
     starting_balance = gets.chomp.to_i
     @cust_account = Account.new(starting_balance, name)
+    save_data
     show_menu
   end
 
@@ -57,6 +65,7 @@ class Interface
     @cust_account.transactions.each do |txn|
       puts txn
     end
+    puts "======================================"
     puts "Press ENTER to continue"
     gets
     show_menu
@@ -69,6 +78,7 @@ class Interface
   end
 
   def load_data
+    puts "======================================"
     puts "What is your Account Name? (This is case-sensitive)"
     account_name = gets.chomp
     if File.exist?("#{account_name}.yml") == true
@@ -77,6 +87,7 @@ class Interface
       show_menu
       save_data
     else
+      puts "======================================"
       puts "That's not your account dude"
       puts "Press ENTER to try again or q to quit."
       input = gets.chomp

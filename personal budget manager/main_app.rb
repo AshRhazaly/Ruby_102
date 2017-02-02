@@ -1,5 +1,6 @@
 load 'interface_class.rb'
 
+puts "======================================"
 puts "Hi there! Welcome to DBS!"
 puts "Press 1 if you'd like to create a new account."
 puts "Press 2 if you've got an existing account."
