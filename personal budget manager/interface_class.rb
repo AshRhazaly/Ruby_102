@@ -60,13 +60,15 @@ class Interface
 
   def save_data
     client_data = {"starting_balance" => @cust_account.balance, "name" => @cust_account.name, "transactions" => @cust_account.transactions}
-    File.open("account_info.yml", "w") {|f| f.write(client_data.to_yaml) }
+    File.open("#{@cust_account.name}.yml", "w") {|f| f.write(client_data.to_yaml) }
     show_menu
   end
 
   def load_data
-    existing_account = YAML.load(File.open("account_info.yml")) if File.exist?("account_info.yml")
-    @cust_account = Account.new(existing_account["starting_balance"], existing_account["name"])
+    puts "What is your name?"
+    account_name = gets.chomp
+    existing_account = YAML.load(File.open("#{account_name}.yml")) if File.exist?("#{account_name}.yml")
+    @cust_account = Account.new(existing_account["starting_balance"], existing_account["name"],existing_account["transactions"])
     show_menu
     save_data
   end
