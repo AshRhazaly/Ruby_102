@@ -1,5 +1,4 @@
 ---
-starting_balance: 4000
+starting_balance: 10
 name: Ash
-transactions:
-- 1. You have deposited 3000
+transactions: []

@@ -56,9 +56,19 @@ class Interface
     puts "======================================"
     puts "What's your starting balance?"
     starting_balance = gets.chomp.to_i
-    @cust_account = Account.new(starting_balance, name)
-    save_data
-    show_menu
+    if starting_balance < 0
+      puts "Dude how can you deposit a negative value??!"
+      puts "Try again"
+      create_account
+    else
+      while starting_balance <= 0
+        puts "Please deposit more than 0"
+        starting_balance = gets.chomp.to_i
+      end
+      @cust_account = Account.new(starting_balance, name)
+      save_data
+      show_menu
+    end
   end
 
   def transaction_history
