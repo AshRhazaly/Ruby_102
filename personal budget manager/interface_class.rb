@@ -6,7 +6,7 @@ class Interface
     puts "\nPress 1 to display your current balance
     \nPress 2 to Deposit
     \nPress 3 to Withdraw
-    \n"
+    \nPress any other number to exit the program."
     user_input = gets.chomp
     if user_input == "1"
       show_balance
